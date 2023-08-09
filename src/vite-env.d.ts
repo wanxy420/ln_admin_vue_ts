@@ -6,6 +6,9 @@ interface ImportMetaEnv {
     readonly VITE_APP_HOST: string;         // 项目启动IP
     readonly VITE_APP_SERVER_OPEN: boolean; // 服务启动时是否自动打开项目
     readonly VITE_RES_URL: string;          // 接口域名或IP
+    readonly VITE_LOGIN_PATH: string;       // 登录页地址
+    readonly VITE_HOME_PATH: string;        // 首页地址
+    readonly VITE_RUN_PATH: string;         // 默认启动地址
 }
 
 declare module '*.vue' {

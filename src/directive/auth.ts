@@ -17,12 +17,8 @@ const auth = (app: App) => {
     },
   });
   app.config.globalProperties.$_has = (value: any) => {
-    let isExist = false;
     const authStore = useAuthStore();
-    if (authStore.btnAuth.includes(value)) {
-      isExist = true;
-    }
-    return isExist;
+    return authStore.btnAuth.includes(value);
   };
 };
 

@@ -41,8 +41,10 @@ import { useUserStore } from "@/store/user";
 import { LoginApi } from "@/api/common/index";
 import { LoginFormInterface } from "@/api/common/modules/index";
 import { lnMessage } from "@/utils/fun";
+import { useRouter } from "vue-router";
 
 const userStore = useUserStore();
+const router = useRouter();
 
 interface RuleForm {
   username: string;
@@ -84,6 +86,9 @@ const handleLogin = async () => {
   const res = await LoginApi(loginForm);
   if (res.code === 200) {
     lnMessage(res.msg);
+    setTimeout(() => {
+      router.push(import.meta.env.VITE_HOME_PATH);
+    }, 500);
   }
 };
 
