@@ -22,13 +22,19 @@ import './router/permission';
 //导入mock 无须可删除
 import './mock/index';
 
-const app = createApp(App);
+// 自定义指令
+import { auth } from "@/directive/auth";
+import { scroll } from "@/directive/scroll";
+import { drag } from "@/directive/drag";
 
+const app = createApp(App);
 // 引入所有图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);
 }
-
+app.use(auth);
+app.use(scroll);
+app.use(drag);
 app.use(pinia);
 app.use(ElementPlus);
 app.use(router);
