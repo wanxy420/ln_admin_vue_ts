@@ -19,6 +19,9 @@ import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 import router from './router/index';
 import './router/permission';
 
+//导入mock 无须可删除
+import './mock/index';
+
 const app = createApp(App);
 
 // 引入所有图标

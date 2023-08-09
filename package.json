@@ -9,11 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/mockjs": "^1.0.7",
     "@types/node": "^20.4.9",
     "@types/nprogress": "^0.2.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "element-plus": "^2.3.9",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.6",
     "pinia-use-persist": "^0.0.21",

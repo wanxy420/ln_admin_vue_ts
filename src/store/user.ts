@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 
 interface UserInterface extends LoginInfoInterface {
-
+    token: string;
+    uid: number;
 };
 
 interface LoginInfoInterface {
@@ -15,8 +16,11 @@ export const useUserStore = defineStore('user', {
         username: '',
         password: '',
         checked: 'false',
+        token: '',
+        uid: 0
     }),
     getters: {
+        // 获取登录信息
         getLoginInfo: (state: UserInterface) => {
             return {
                 username: state.username,
@@ -24,8 +28,16 @@ export const useUserStore = defineStore('user', {
                 checked: state.checked,
             }
         },
+        // 获取登录成功用户信息
+        getUserInfo: (state: UserInterface) => {
+            return {
+                token: state.token,
+                uid: state.uid
+            }
+        }
     },
     actions: {
+        // 存储登录信息
         handleLoginInfo(info: LoginInfoInterface) {
             this.checked = info.checked;
             if (info.checked === 'true') {
@@ -36,6 +48,11 @@ export const useUserStore = defineStore('user', {
                 this.password = '';
             }
 
+        },
+        // 存储登录用户信息
+        handleUserInfo(token: string, uid: number) {
+            this.token = token;
+            this.uid = uid;
         }
     },
     // 数据持久化配置
