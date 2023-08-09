@@ -40,6 +40,7 @@ import type { FormInstance, FormRules } from "element-plus";
 import { useUserStore } from "@/store/user";
 import { LoginApi } from "@/api/common/index";
 import { LoginFormInterface } from "@/api/common/modules/index";
+import { lnMessage } from "@/utils/fun";
 
 const userStore = useUserStore();
 
@@ -74,18 +75,15 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 
 // 提交登录数据
 const handleLogin = async () => {
-  console.log(ruleForm);
-
   // 存储登录信息
   userStore.handleLoginInfo(ruleForm);
-
   const loginForm: LoginFormInterface = {
     username: ruleForm.username,
     password: ruleForm.password,
   };
   const res = await LoginApi(loginForm);
   if (res.code === 200) {
-    console.log(res.data);
+    lnMessage(res.msg);
   }
 };
 
