@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', {
     },
     actions: {
         // 存储登录信息
-        handleLoginInfo(info: LoginInfoInterface) {
+        setLoginInfo(info: LoginInfoInterface) {
             this.checked = info.checked;
             if (info.checked === 'true') {
                 this.username = info.username;
@@ -50,7 +50,7 @@ export const useUserStore = defineStore('user', {
 
         },
         // 存储登录用户信息
-        handleUserInfo(token: string, uid: number) {
+        setUserInfo(token: string, uid: number) {
             this.token = token;
             this.uid = uid;
         }

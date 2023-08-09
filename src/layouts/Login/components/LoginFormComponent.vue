@@ -78,7 +78,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 // 提交登录数据
 const handleLogin = async () => {
   // 存储登录信息
-  userStore.handleLoginInfo(ruleForm);
+  userStore.setLoginInfo(ruleForm);
   const loginForm: LoginFormInterface = {
     username: ruleForm.username,
     password: ruleForm.password,
@@ -86,6 +86,7 @@ const handleLogin = async () => {
   const res = await LoginApi(loginForm);
   if (res.code === 200) {
     lnMessage(res.msg);
+    userStore.setUserInfo(res.data.token, res.data.uid);
     setTimeout(() => {
       router.push(import.meta.env.VITE_HOME_PATH);
     }, 500);

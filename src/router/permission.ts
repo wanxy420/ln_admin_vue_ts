@@ -1,10 +1,10 @@
 import router from "./index";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import { useAuthStore } from '@/store/auth'
 
 // 页面白名单
 const whitePath = ['login', 'chat'];
-
 const viteComponent = import.meta.glob("../views/**/*.vue");
 
 NProgress.configure({
@@ -17,7 +17,13 @@ NProgress.configure({
 
 // 路由前置守卫
 router.beforeEach((to, from, next) => {
+    const authSotre = useAuthStore();
     NProgress.start();
+    if (authSotre.authList.length > 0) {
+
+    } else {
+
+    }
     return next();
 });
 

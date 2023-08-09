@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ContentTypeEnum, HttpConfigInterface, ResultInterface } from './index.type'
-
+import { useUserStore } from '@/store/user'
 
 //创建axios的一个实例 
 const instance = axios.create({
@@ -12,9 +12,10 @@ const instance = axios.create({
 })
 //请求拦截器 
 instance.interceptors.request.use((config: any) => {
+    const userStore = useUserStore();
+    const { token } = userStore.getUserInfo;
     // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
-    const token = window.localStorage.getItem('token');
-    token && (config.headers.Authorization = token)
+    token && (config.headers.token = token)
     //若请求方式为post，则将data参数转为JSON字符串
     if (config.method === 'POST') {
         config.data = JSON.stringify(config.data);

@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "basic",
+    "path": "/basic",
+    "component": "/basic",
+    "icon": "HelpFilled",
+    "label": "基础组件",
+    "isMenu": true,
+    "isKeepAlive": false,
+    "children": [
+      {
+        "id": 2,
+        "name": "basicTable",
+        "path": "/basic/table",
+        "component": "/basic/table",
+        "icon": "",
+        "label": "基础表格",
+        "isMenu": true,
+        "isKeepAlive": true,
+        "children": []
+      }
+    ]
+  }
+]
