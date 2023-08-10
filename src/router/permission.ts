@@ -8,7 +8,10 @@ import { MenuItemInterface } from '@/api/common/modules/index'
 let isFirstOpen = true;
 
 // 页面白名单
-const whitePath = ['login'];
+const whitePath = [import.meta.env.VITE_LOGIN_PATH];
+// 清除缓存名单
+const clearPaht = [import.meta.env.VITE_LOGIN_PATH, import.meta.env.VITE_HOME_PATH];
+
 const viteComponent = import.meta.glob("../views/**/*.vue");
 
 NProgress.configure({
@@ -24,6 +27,9 @@ router.beforeEach(async (to, from, next) => {
     const authSotre = useAuthStore();
     NProgress.start();
     // 判断是否添加到tags中，在首页显示页面的tags
+    if (clearPaht.includes(to.fullPath as string)) {
+        authSotre.clearTagsList();
+    }
     if (to.meta.isTabs) {
         authSotre.setTagsList({
             label: to.meta.title as string,
@@ -33,7 +39,7 @@ router.beforeEach(async (to, from, next) => {
         });
     };
     // 判断是否是首次打开，如是添加动态权限
-    if (isFirstOpen && !whitePath.includes(to.name as string)) {
+    if (isFirstOpen && !whitePath.includes(to.fullPath as string)) {
         // 判断是否存储了权限
         if (authSotre.getAuthList.length === 0 || !Array.isArray(authSotre.getAuthList)) {
             await getAuth();

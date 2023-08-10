@@ -30,7 +30,7 @@
       ] // 多加个这个
     },
     "types": [
-      "vite/client"
+      "vite/client",
     ]
   },
   "include": [

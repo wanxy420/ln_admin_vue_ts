@@ -1,7 +1,5 @@
 import { defineStore } from "pinia";
 import { MenuItemInterface } from '@/api/common/modules/index';
-import { useRouter, useRoute } from 'vue-router';
-import { nextTick } from 'vue';
 
 interface AuthInterface {
     // 按钮权限
@@ -31,6 +29,20 @@ export const useAuthStore = defineStore('auth', {
         getTagsList: (state: AuthInterface) => state.tagsList,
     },
     actions: {
+        clearTagsList() {
+            this.tagsList = [];
+        },
+        clearBtnAuth() {
+            this.btnAuth = [];
+        },
+        clearAuthList() {
+            this.authList = [];
+        },
+        logOut() {
+            this.clearTagsList();
+            this.clearBtnAuth();
+            this.clearAuthList();
+        },
         setAuthList(list: MenuItemInterface[]) {
             this.authList = list;
         },

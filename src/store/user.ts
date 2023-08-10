@@ -37,6 +37,10 @@ export const useUserStore = defineStore('user', {
         }
     },
     actions: {
+        logOut() {
+            this.token = '';
+            this.uid = 0;
+        },
         // 存储登录信息
         setLoginInfo(info: LoginInfoInterface) {
             this.checked = info.checked;

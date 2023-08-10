@@ -1,6 +1,8 @@
 import { useAuthStore } from "@/store/auth";
+import { useUserStore } from "@/store/user";
 import { ElLoading, ElMessage } from "element-plus";
 import { GetMenuApi } from '@/api/common/index'
+import { useRouter } from 'vue-router';
 
 let loading;
 /**
@@ -67,5 +69,15 @@ export const getAuth = async () => {
     authSotre.setAuthList(res.data);
   }
 };
+
+// 退出登录
+export const logOut = () => {
+  const authSotre = useAuthStore();
+  const userStore = useUserStore();
+  authSotre.logOut();
+  userStore.logOut();
+  const router = useRouter();
+  router.push(import.meta.env.VITE_LOGIN_PATH);
+}
 
 

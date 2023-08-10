@@ -23,6 +23,7 @@
     "sass": "^1.64.2",
     "tailwindcss": "2.2.19",
     "vite-plugin-html": "^3.2.0",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

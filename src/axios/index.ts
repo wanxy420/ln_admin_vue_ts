@@ -1,6 +1,13 @@
 import axios from 'axios';
 import { ContentTypeEnum, HttpConfigInterface, ResultInterface } from './index.type'
 import { useUserStore } from '@/store/user'
+import { logOut } from '@/utils/fun';
+
+enum CodeEnum {
+    success = 200,
+    error = 9001,
+    effe = 10001,
+}
 
 //创建axios的一个实例 
 const instance = axios.create({
@@ -29,6 +36,9 @@ instance.interceptors.request.use((config: any) => {
 instance.interceptors.response.use((response) => {
     //响应成功
     console.log('响应成功');
+    if (response.data.code === CodeEnum.effe) {
+        logOut();
+    }
     return response.data;
 }, (error) => {
     console.log(error)
