@@ -18,7 +18,7 @@
               <KeepAlive
                 :include="
                   authStore.getTagsList.map((item) => {
-                    return item.path;
+                    return item.name;
                   })
                 "
               >
@@ -45,6 +45,12 @@ import { useAuthStore } from "@/store/auth";
 
 const configStore = useConfigStore();
 const authStore = useAuthStore();
+
+console.log(
+  authStore.getTagsList.map((item) => {
+    return item.name;
+  })
+);
 </script>
 <style scoped lang="scss">
 :deep(.el-main) {

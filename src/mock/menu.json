@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "basic",
+    "name": "Basic",
     "path": "/basic",
     "component": "/basic",
     "icon": "HelpFilled",
@@ -11,7 +11,7 @@
     "children": [
       {
         "id": 2,
-        "name": "basicTable",
+        "name": "BasicTable",
         "path": "/basic/table",
         "component": "/basic/table/index",
         "icon": "",
@@ -22,7 +22,7 @@
       },
       {
         "id": 3,
-        "name": "basicForm",
+        "name": "BasicForm",
         "path": "/basic/form",
         "component": "/basic/form/index",
         "icon": "",
