@@ -11,7 +11,7 @@
               :type="item.path === route.path ? '' : 'info'"
               effect="dark"
               size="large"
-              closable
+              :closable="authSotre.getTagsList.length > 1"
               @close="handleDeleteTags(index)"
               @click="handleToPath(item.path)"
               class="mr-2 cursor-pointer"
@@ -41,13 +41,13 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item @click.native="closeTagsData('left')">
+          <el-dropdown-item @click.native="closeTagsData('left', route.path)">
             关闭左侧
           </el-dropdown-item>
-          <el-dropdown-item @click.native="closeTagsData('right')">
+          <el-dropdown-item @click.native="closeTagsData('right', route.path)">
             关闭右侧
           </el-dropdown-item>
-          <el-dropdown-item @click.native="closeTagsData('other')">
+          <el-dropdown-item @click.native="closeTagsData('other', route.path)">
             关闭其他
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -66,30 +66,18 @@ const router = useRouter();
 
 // 点击删除对应页面
 function handleDeleteTags(index: number) {
-  authSotre.delTags(index);
+  if (route.path === authSotre.getTagsList[index].path) {
+    authSotre.delTags(index);
+    let path = authSotre.getTagsList[authSotre.getTagsList.length - 1].path;
+    router.push(path);
+  }
 }
 // 点击跳转到对应页面
 function handleToPath(path: string) {
   router.push(path);
 }
-const closeTagsData = (type: string) => {
-  // if (type === "left") {
-  //   home.headerTabsList.splice(
-  //     0,
-  //     home.headerTabsList.findIndex((x) => x.path === route.path)
-  //   );
-  // } else if (type === "right") {
-  //   home.headerTabsList.splice(
-  //     home.headerTabsList.findIndex((x) => x.path === route.path) + 1,
-  //     home.headerTabsList.length
-  //   );
-  // } else if (type === "other") {
-  //   home.headerTabsList = [
-  //     home.headerTabsList[
-  //       home.headerTabsList.findIndex((x) => x.path === route.path)
-  //     ],
-  //   ];
-  // }
+const closeTagsData = (type: "left" | "right" | "other", path: string) => {
+  authSotre.closeTagsData(type, path);
 };
 </script>
 <style scoped lang="scss"></style>

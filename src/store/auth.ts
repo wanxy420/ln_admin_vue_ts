@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
-import { MenuItemInterface } from '@/api/common/modules/index'
+import { MenuItemInterface } from '@/api/common/modules/index';
+import { useRouter, useRoute } from 'vue-router';
+import { nextTick } from 'vue';
 
 interface AuthInterface {
     // 按钮权限
@@ -47,7 +49,27 @@ export const useAuthStore = defineStore('auth', {
         },
         delTags(index: number) {
             this.tagsList.splice(index, 1);
-        }
+        },
+        closeTagsData(type: 'left' | 'right' | 'other', path: string) {
+            // 获取下标
+            let index = this.tagsList.findIndex(x => x.path === path);
+            switch (type) {
+                case 'left':
+                    this.tagsList.splice(0, index);
+                    break;
+                case 'right':
+                    this.tagsList.splice(index + 1, this.tagsList.length);
+                    break;
+                case 'other':
+                    this.tagsList = [this.tagsList[index]];
+                    break;
+                default:
+                    // 防止多加了类型报错提示
+                    let defaultType: never = type;
+                    console.log(defaultType);
+                    break;
+            }
+        },
     },
     // 数据持久化配置
     persist: {
