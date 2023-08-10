@@ -11,8 +11,8 @@ export function LoginApi(params: LoginFormInterface) {
 
 // 请求获取菜单
 export function GetMenuApi() {
-    return lnHttp<MenuItemInterface[]>('/admin/login', {
-        methods: 'post',
+    return lnHttp<MenuItemInterface[]>('/admin/getMenu', {
+        methods: 'get',
         data: {}
     });
 }

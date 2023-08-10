@@ -59,6 +59,5 @@ export const useUserStore = defineStore('user', {
     persist: {
         enabled: true,
         // 可删除
-        encryptionKey: 'user',
     }
 });

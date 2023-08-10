@@ -1,4 +1,6 @@
+import { useAuthStore } from "@/store/auth";
 import { ElLoading, ElMessage } from "element-plus";
+import { GetMenuApi } from '@/api/common/index'
 
 let loading;
 /**
@@ -54,6 +56,15 @@ export const lnMessage = (
       message: message,
       type: type,
     });
+  }
+};
+
+// 请求获取权限
+export const getAuth = async () => {
+  const authSotre = useAuthStore();
+  const res = await GetMenuApi();
+  if (res.code === 200) {
+    authSotre.setAuthList(res.data);
   }
 };
 
