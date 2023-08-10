@@ -23,6 +23,15 @@ NProgress.configure({
 router.beforeEach(async (to, from, next) => {
     const authSotre = useAuthStore();
     NProgress.start();
+    // 判断是否添加到tags中，在首页显示页面的tags
+    if (to.meta.isTabs) {
+        authSotre.setTagsList({
+            label: to.meta.title as string,
+            path: to.path,
+            isKeepAlive: to.meta.isKeepAlive as boolean,
+            name: to.name as string
+        });
+    };
     // 判断是否是首次打开，如是添加动态权限
     if (isFirstOpen && !whitePath.includes(to.name as string)) {
         // 判断是否存储了权限

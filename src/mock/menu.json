@@ -19,6 +19,17 @@
         "isMenu": true,
         "isKeepAlive": true,
         "children": []
+      },
+      {
+        "id": 3,
+        "name": "basicForm",
+        "path": "/basic/form",
+        "component": "/basic/form/index",
+        "icon": "",
+        "label": "基础表单",
+        "isMenu": true,
+        "isKeepAlive": true,
+        "children": []
       }
     ]
   }
