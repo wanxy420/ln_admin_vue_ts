@@ -13,7 +13,7 @@
         "id": 2,
         "name": "basicTable",
         "path": "/basic/table",
-        "component": "/basic/table",
+        "component": "/basic/table/table",
         "icon": "",
         "label": "基础表格",
         "isMenu": true,

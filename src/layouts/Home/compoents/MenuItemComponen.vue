@@ -24,7 +24,11 @@ const componentId = computed(() => {
 });
 </script>
 <template>
-  <component :is="componentId" :itemChildren="props.itemChildren">
+  <component
+    :is="componentId"
+    :itemChildren="props.itemChildren"
+    v-if="props.itemChildren?.isMenu"
+  >
     <MenuItemComponen
       v-for="item in props.itemChildren?.children"
       :key="item.id"
