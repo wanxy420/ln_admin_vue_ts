@@ -11,7 +11,6 @@ const props = defineProps({
 });
 
 const componentId = computed(() => {
-  console.log(props.itemChildren);
   if (
     props.itemChildren?.children &&
     Array.isArray(props.itemChildren?.children) &&
@@ -29,7 +28,7 @@ const componentId = computed(() => {
     :itemChildren="props.itemChildren"
     v-if="props.itemChildren?.isMenu"
   >
-    <MenuItemComponen
+    <MenuItemComponent
       v-for="item in props.itemChildren?.children"
       :key="item.id"
       :itemChildren="item"

@@ -26,7 +26,7 @@ const slotBody = !!useSlots().body;
 const slotBottom = !!useSlots().bottom;
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .ln-card-content {
   height: auto;
   background-color: white;

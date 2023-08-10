@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "@/store/auth";
-import MenuItem from "./MenuItemComponen.vue";
+import MenuItem from "./MenuItemComponent.vue";
 import { useRoute } from "vue-router";
 
 const authStore = useAuthStore();

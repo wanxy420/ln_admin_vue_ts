@@ -27,5 +27,6 @@ export const useAuthStore = defineStore('auth', {
     persist: {
         enabled: true,
         // 可删除
+        encryptionKey: 'auth'
     }
 });

@@ -69,7 +69,7 @@ watch(
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 @media screen and (max-width: 750px) {
   .ln-dialog-content {
     width: calc(100vw - 16px) !important;
@@ -79,7 +79,7 @@ watch(
     border-radius: 0 !important;
   }
 }
-@borderRadius: 4px;
+$borderRadius: 4px;
 #ln-dialog {
   width: 100%;
   height: 100%;
@@ -100,7 +100,7 @@ watch(
   .ln-dialog-content {
     position: absolute;
     background-color: white;
-    border-radius: @borderRadius;
+    border-radius: $borderRadius;
     display: flex;
     flex-direction: column;
     .content-header {
@@ -114,7 +114,7 @@ watch(
       background-color: #f2f2f2;
       border-bottom: 1px solid #d8d8d8;
       color: #6e6e6e;
-      border-radius: @borderRadius @borderRadius 0 0;
+      border-radius: $borderRadius $borderRadius 0 0;
       .header-close {
         cursor: pointer;
         border-radius: 50%;
@@ -129,7 +129,7 @@ watch(
       padding: 8px;
       overflow: auto;
       background-color: white;
-      border-radius: 0 0 @borderRadius @borderRadius;
+      border-radius: 0 0 $borderRadius $borderRadius;
     }
   }
 }

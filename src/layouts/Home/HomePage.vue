@@ -17,4 +17,8 @@
 <script setup lang="ts">
 import MenuIndex from "@/layouts/Home/compoents/MenuIndexComponent.vue";
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+:deep(.el-main) {
+  padding: 8px;
+}
+</style>

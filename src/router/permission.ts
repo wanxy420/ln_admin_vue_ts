@@ -56,7 +56,7 @@ const getRouters = () => {
         let homeRoute = {
             path: import.meta.env.VITE_HOME_PATH,
             name: 'home',
-            component: () => import("@/layouts/Home/HomePage.vue"),
+            component: () => import("../layouts/Home/HomePage.vue"),
             meta: {
                 title: '首页'
             },
@@ -95,8 +95,8 @@ const handlerRouterItem = (item: MenuItemInterface) => {
         path: item.path,
         component: viteComponent[`../views${item.component}.vue`],
         meta: {
-            keepAlive: true,
-            isTabs: true,
+            keepAlive: item.isKeepAlive,
+            isTabs: item.isMenu,
             title: item.label,
         },
     };

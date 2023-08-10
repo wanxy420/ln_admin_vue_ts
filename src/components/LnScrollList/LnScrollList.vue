@@ -20,8 +20,9 @@
 <script lang="ts" setup>
 import { isUndefined } from "lodash";
 import { ref } from "vue";
-import useStore from "@/store";
-const { config } = useStore();
+import { useConfigStore } from "@/store/config";
+
+const configStore = useConfigStore();
 
 // 判断刷新页面
 const isRefresh = ref<boolean>(true);
@@ -35,13 +36,13 @@ const getbox = () => boxs.value as HTMLDivElement;
 
 // 触底加载更多
 const load = () => {
-  if (config.isMobile) {
+  if (configStore.getIsMobile) {
     emit("scrollLoad");
   }
 };
 
 const onTouchstart = (e: TouchEvent) => {
-  if (config.isMobile) {
+  if (configStore.getIsMobile) {
     disy = e.changedTouches[0].pageY - y;
     getbox().style.transition = `none`;
     if (!isUndefined(document.ontouchmove)) document.ontouchmove = fnmove;

@@ -2,9 +2,10 @@
 import { PropType, ref } from "vue";
 import LnPagination from "../LnPagination/LnPagination.vue";
 import LnScrollList from "../LnScrollList/LnScrollList.vue";
-import useStore from "@/store";
+import { useConfigStore } from "@/store/config";
 
-const { config } = useStore();
+const configStore = useConfigStore();
+
 const emit = defineEmits([
   "handleSizeChange",
   "handleCurrentChange",
@@ -46,7 +47,7 @@ const handleSelectionChange = (selection: any) => {
 
 // 手机端情况下触底加载更多
 const load = () => {
-  if (config.isMobile) {
+  if (configStore.getIsMobile) {
     emit("scrollLoad");
   }
 };
@@ -65,7 +66,7 @@ defineExpose({
 </script>
 <template>
   <div class="table-content">
-    <template v-if="!config.isMobile">
+    <template v-if="!configStore.getIsMobile">
       <el-table
         :data="props.tableData"
         stripe
@@ -127,7 +128,7 @@ defineExpose({
           />
         </template>
       </el-table>
-      <div class="table-foot">
+      <div class="table-foot bg-white">
         <LnPagination
           :paginationConfig="props.config"
           @handleSizeChange="handleSizeChange"
@@ -149,7 +150,7 @@ defineExpose({
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .table-content {
   width: 100%;
   height: 100%;
@@ -158,6 +159,7 @@ defineExpose({
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  border-radius: 4px;
   .table-foot {
     width: 100%;
     padding: 8px 0;

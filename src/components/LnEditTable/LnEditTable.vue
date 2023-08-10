@@ -42,7 +42,7 @@ const props = defineProps({
   </el-table>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .el-table {
   width: 100%;
   height: 100%;
