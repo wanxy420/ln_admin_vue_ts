@@ -142,7 +142,7 @@ defineExpose({
         @pull-load="pullLoad"
         ref="lnScrollListRef"
       >
-        <template v-for="(item, index) in tableData">
+        <template v-for="(item, index) in tableData" :key="index">
           <slot name="card" :row="item"></slot>
         </template>
       </ln-scroll-list>
