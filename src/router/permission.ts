@@ -48,6 +48,10 @@ router.beforeEach(async (to, from, next) => {
         isFirstOpen = false;
         return next({ ...to, replace: true });
     }
+    if (to.fullPath === import.meta.env.VITE_HOME_PATH) {
+        let toPaht = getFirstMenu(authSotre.getAuthList);
+        return next({ path: toPaht });
+    }
     document.title = to.meta.title as string;
     return next();
 });
@@ -115,4 +119,12 @@ const handlerRouterItem = (item: MenuItemInterface) => {
             title: item.label,
         },
     };
+};
+
+// 获取首个打开的菜单
+function getFirstMenu(data: MenuItemInterface[]) {
+    if (Array.isArray(data[0].children) && data[0].children.length > 0) {
+        return getFirstMenu(data[0].children);
+    }
+    return data[0].path;
 };

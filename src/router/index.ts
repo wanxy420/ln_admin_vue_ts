@@ -13,7 +13,10 @@ const routes: Array<RouteRecordRaw> = [
             title: '登录'
         }
     },
-
+    {
+        path: "/:pathMatch(.*)*",
+        component: () => import("@/layouts/Error/index.vue"),
+    },
 ];
 
 const router = createRouter({

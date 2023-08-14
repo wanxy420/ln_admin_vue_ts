@@ -2,7 +2,7 @@ import { useAuthStore } from "@/store/auth";
 import { useUserStore } from "@/store/user";
 import { ElLoading, ElMessage } from "element-plus";
 import { GetMenuApi } from '@/api/common/index'
-import { useRouter } from 'vue-router';
+import Vrouter from "@/router"
 
 let loading;
 /**
@@ -76,8 +76,7 @@ export const logOut = () => {
   const userStore = useUserStore();
   authSotre.logOut();
   userStore.logOut();
-  const router = useRouter();
-  router.push(import.meta.env.VITE_LOGIN_PATH);
+  Vrouter.push(import.meta.env.VITE_LOGIN_PATH);
 }
 
 
