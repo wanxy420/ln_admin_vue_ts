@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: import.meta.env.VITE_LOGIN_PATH,
-        name: 'login',
+        name: 'Login',
         component: () => import("@/layouts/Login/LoginPage.vue"),
         meta: {
             title: '登录'

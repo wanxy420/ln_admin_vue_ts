@@ -11,7 +11,7 @@ enum CodeEnum {
 
 //创建axios的一个实例 
 const instance = axios.create({
-    baseURL: import.meta.env.VITE_RES_URL, //接口统一域名
+    baseURL: '/api', //接口统一域名
     timeout: 6000, //设置超时
     headers: {
         'Content-Type': ContentTypeEnum.json,

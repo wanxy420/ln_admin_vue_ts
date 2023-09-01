@@ -7,7 +7,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 export default defineConfig(({ mode, command }) => {
   console.log(command);
   const env = loadEnv(mode, process.cwd());
-  const { VITE_APP_SERVER_OPEN, VITE_APP_HOST, VITE_APP_PORT, VITE_APP_LOGO, VITE_APP_TITLE } = env;
+  const { VITE_APP_SERVER_OPEN, VITE_APP_HOST, VITE_APP_PORT, VITE_APP_LOGO, VITE_APP_TITLE, VITE_RES_URL } = env;
   return {
     plugins: [vue(),
     vueSetupExtend(),
@@ -23,6 +23,13 @@ export default defineConfig(({ mode, command }) => {
       port: +VITE_APP_PORT,
       host: VITE_APP_HOST,
       open: VITE_APP_SERVER_OPEN == 'true',
+      proxy: {
+        '/api': {
+          target: VITE_RES_URL, //目标url
+          changeOrigin: true, //支持跨域
+          rewrite: (path) => path.replace(/^\/api/, ""),
+        }
+      }
     },
     resolve: {
       // 别名

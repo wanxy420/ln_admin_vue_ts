@@ -11,10 +11,14 @@
       ref="tableRef"
     >
       <template #dateTags="row">
-        <el-tag>{{ row.row.date }}</el-tag>
+        <el-tag>
+          {{ row.row.date }}
+        </el-tag>
       </template>
       <template #expandSlot="row">
-        <el-tag>{{ row.row.date }}</el-tag>
+        <el-tag>
+          {{ row.row.date }}
+        </el-tag>
       </template>
       <template #operationSlot="row">
         <div style="display: flex; justify-content: space-around; width: 100%">

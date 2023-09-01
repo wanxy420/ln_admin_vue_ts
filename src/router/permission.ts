@@ -5,7 +5,6 @@ import { useAuthStore } from '@/store/auth'
 import { getAuth } from "@/utils/fun";
 import { MenuItemInterface } from '@/api/common/modules/index'
 
-let isFirstOpen = true;
 
 // 页面白名单
 const whitePath = [import.meta.env.VITE_LOGIN_PATH];
@@ -39,13 +38,9 @@ router.beforeEach(async (to, from, next) => {
         });
     };
     // 判断是否是首次打开，如是添加动态权限
-    if (isFirstOpen && !whitePath.includes(to.fullPath as string)) {
-        // 判断是否存储了权限
-        if (authSotre.getAuthList.length === 0 || !Array.isArray(authSotre.getAuthList)) {
-            await getAuth();
-        }
+    if (!router.hasRoute('Home') && !whitePath.includes(to.fullPath as string)) {
+        await getAuth();
         await getRouters();
-        isFirstOpen = false;
         return next({ ...to, replace: true });
     }
     if (to.fullPath === import.meta.env.VITE_HOME_PATH) {
@@ -74,7 +69,7 @@ const getRouters = () => {
         });
         let homeRoute = {
             path: import.meta.env.VITE_HOME_PATH,
-            name: 'home',
+            name: 'Home',
             component: () => import("../layouts/Home/HomePage.vue"),
             meta: {
                 title: '首页'
